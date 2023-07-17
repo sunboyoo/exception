@@ -2,8 +2,6 @@ package org.lcm.spring.exception.event;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.lang.Nullable;
 
@@ -13,8 +11,7 @@ import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 
-@Getter
-@Setter
+
 public class GlobalExceptionEvent extends ApplicationEvent {
     private final String localDateTime = LocalDateTime.now().toString();
     private final Map<String, Object> exception = new HashMap<>();
@@ -56,5 +53,21 @@ public class GlobalExceptionEvent extends ApplicationEvent {
             this.session.put("creationTime", LocalDateTime.ofInstant(Instant.ofEpochMilli(session.getCreationTime()),
                     ZoneId.of(ZoneId.SHORT_IDS.get("EST"))));
         }
+    }
+
+    public String getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public Map<String, Object> getException() {
+        return exception;
+    }
+
+    public Map<String, Object> getRequest() {
+        return request;
+    }
+
+    public Map<String, Object> getSession() {
+        return session;
     }
 }

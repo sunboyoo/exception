@@ -28,7 +28,7 @@
         <!--Spring Data JPA 集成 QueryDsl-->
         <querydsl-apt.version>5.0.0</querydsl-apt.version>
 
-        <org.projectlombok.version>1.18.26</org.projectlombok.version>
+        <org.projectlombok.version>1.18.28</org.projectlombok.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <org.springdoc.version>2.1.0</org.springdoc.version>
@@ -67,6 +67,32 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- 下面三个dependency是解决Lombok警告       -->
+        <!-- [WARNING] unknown enum constant javax.annotation.meta.When.MAYBE -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+            <version>4.7.3</version>
+        </dependency>
+        <!-- 上面三个dependency是解决Lombok警告       -->
+
         <!--LoggerFactory, Logger-->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -78,7 +104,16 @@
             <artifactId>spring-security-core</artifactId>
             <version>${spring-security-core.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>6.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>6.1.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
