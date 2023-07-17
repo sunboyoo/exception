@@ -13,6 +13,7 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,10 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *          这样的话，既满足了逻辑完整性，也对swagger比较友好
  *      (2) 如果controller中出现了意料之外的异常，会有最终的地方来处理（记录下日志并返回你希望的内容）
  *      (3) 可以自定义一个或一些自己的异常，更加个性化地返回内容和 HTTP Code。
- *
- *
  *  2. Controller级别的异常处理 - 配合全局异常处理
- *
  *  3. 使用 ResponseEntity 还是 注解 @ResponseStatus 返回?
  *      Warning: when using this annotation on an exception class, or when setting the reason attribute of this annotation,
  *      the HttpServletResponse.sendError method will be used.
@@ -100,7 +98,7 @@ public class GlobalExceptionHandlerControllerAdvice implements ApplicationEventP
     }
 
     @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+    public void setApplicationEventPublisher(@NonNull ApplicationEventPublisher applicationEventPublisher) {
         this.applicationEventPublisher = applicationEventPublisher;
     }
 }

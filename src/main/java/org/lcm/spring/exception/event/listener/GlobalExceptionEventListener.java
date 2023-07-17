@@ -4,6 +4,7 @@ package org.lcm.spring.exception.event.listener;
 import org.lcm.spring.exception.event.GlobalExceptionEvent;
 import org.lcm.spring.exception.event.processor.GlobalExceptionEventProcessor;
 import org.springframework.context.ApplicationListener;
+import org.springframework.lang.NonNull;
 
 public class GlobalExceptionEventListener implements ApplicationListener<GlobalExceptionEvent> {
     private final GlobalExceptionEventProcessor globalExceptionEventProcessor;
@@ -13,7 +14,7 @@ public class GlobalExceptionEventListener implements ApplicationListener<GlobalE
     }
 
     @Override
-    public void onApplicationEvent(GlobalExceptionEvent event) {
+    public void onApplicationEvent(@NonNull GlobalExceptionEvent event) {
         this.globalExceptionEventProcessor.process(event);
     }
 }
