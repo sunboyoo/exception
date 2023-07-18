@@ -21,9 +21,9 @@ import org.springframework.context.annotation.Import;
 @ConditionalOnClass(GlobalExceptionHandlerControllerAdvice.class)
 @Import(GlobalExceptionHandlerControllerAdvice.class)
 public class GlobalExceptionHandlerAutoConfiguration {
-    private final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandlerAutoConfiguration.class);
+    private final static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandlerAutoConfiguration.class);
 
-    {
+    static {
         logger.info("Import GlobalExceptionHandlerAutoConfigure");
     }
 

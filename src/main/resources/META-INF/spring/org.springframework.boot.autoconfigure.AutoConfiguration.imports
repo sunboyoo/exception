@@ -1,2 +1,2 @@
 org.lcm.spring.exception.autoconfiguration.GlobalExceptionHandlerAutoConfiguration
-org.lcm.spring.exception.security.SpringSecurityPermitAllRequestsAutoConfiguration
+org.lcm.spring.exception.security.SpringSecurityInstructionAutoConfiguration

@@ -9,7 +9,9 @@
 
 3. This public code library includes Spring Security's exceptions.
 When your project imports this code library, it will automatically bring in the Spring Security dependency and it will start working.
-If your project doesn't need the Spring Security dependency, you can annotate your SpringApplication class with @SpringSecurityPermitAllRequests to allow all requests.
+If your project doesn't need the Spring Security dependency, you can config
+   application.properties:
+   spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 
 中文
 
@@ -22,4 +24,6 @@ If your project doesn't need the Spring Security dependency, you can annotate yo
 
 3. 该公共代码库包含了Spring Security的exception。 
 当你的工程引入该代码库的时候，会自动引入Spring Security依赖，并且工作。
-如果你的工程中不需要Spring Security 依赖，可以在SpringApplication类上加注解@SpringSecurityPermitAllRequests放行所有请求。
+如果你的工程中不需要Spring Security 依赖，可以在做一下配置：
+application.properties:
+   spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
